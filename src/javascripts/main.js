@@ -1,3 +1,8 @@
 import '../styles/main.scss';
+import grid from './components/grid/grid';
 
-console.log('hooboy');
+const init = () => {
+  grid.makeGrid();
+};
+
+init();

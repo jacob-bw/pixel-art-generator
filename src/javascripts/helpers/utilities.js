@@ -1,3 +1,7 @@
-const printToDom = (toPrint, divId) => { document.getElementById(divId).innerHTML = toPrint };
+import $ from 'jquery';
+
+const printToDom = (toPrint, divId) => {
+  $(`#${divId}`).html(toPrint);
+};
 
 export default { printToDom };
