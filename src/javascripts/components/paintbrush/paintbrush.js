@@ -1,3 +1,4 @@
+import $ from 'jquery';
 import utilities from '../../helpers/utilities';
 
 const colors = ['chartreuse', 'darkorchid', 'papayawhip', 'blanchedalmond', 'tomato', 'cornsilk'];
@@ -9,7 +10,7 @@ const printColorPicker = () => {
     const color = colors[i];
     domString += `
       <div class="form-check form-check-inline">
-        <input name="color-radio" class="form-check-input" type="radio" id="${color}inlineCheckbox" value="${color}">
+        <input name="color-radio" class="form-check-input color-choice" type="radio" id="${color}inlineCheckbox" value="${color}">
         <label class="form-check-label" for="${color}inlineCheckbox">${color}</label>
       </div>
       `;
@@ -18,4 +19,14 @@ const printColorPicker = () => {
   }
 };
 
-export default { printColorPicker };
+const paintPixel = (event) => {
+  const pixel = $(event.target);
+  const colorChoice = $('.color-choice:checked').val();
+  pixel.css('backgroundColor', colorChoice);
+};
+
+const attachEvents = () => {
+  $(document).on('click', 'td', paintPixel);
+};
+
+export default { printColorPicker, attachEvents };
